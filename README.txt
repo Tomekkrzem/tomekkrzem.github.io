@@ -1,31 +1,42 @@
-Solid State by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+# Tomasz Krzeminski — Portfolio
 
+Personal portfolio website showcasing my background, projects, and experience in mechanical engineering and robotics. 
 
-After a somewhat extended break from HTML5 UP (to work on a secret-ish new project --
-more on that later!) I'm back with a brand new design: Solid State, a slick new multi-
-pager that combines some of the ideas I've played with over at Pixelarity with an "angular"
-sort of look. Hope you dig it :)
+**Live site:** _add your deployed URL here https://tomekkrzem.github.io
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+## About
 
-(* = not included)
+This site highlights my work in mechanical design and robotic hardware. It includes:
 
-AJ
-aj@lkn.io | @ajlkn
+- **Home** — introduction and profile
+- **About** — background and research interests
+- **Experience** — relevant work and academic history
+- **Projects** — selected design and engineering projects
+- **Contact** — ways to get in touch
 
+## Project Structure
 
-Credits:
+```
+├── index.html
+├── about.html
+├── projects.html
+├── contact.html
+├── assets/
+│   ├── css/
+│   │   ├── main.css
+│   │   └── noscript.css
+│   └── js/
+│       ├── main.js
+│       ├── jquery.min.js
+│       ├── jquery.scrollex.min.js
+│       ├── browser.min.js
+│       ├── breakpoints.min.js
+│       └── util.js
+└── images/
+    ├── Tomasz_Profile.png
+    └── bg.jpg
+```
 
-	Demo Images:
-		Unsplash (unsplash.com)
+## License
 
-	Icons:
-		Font Awesome (fontawesome.io)
-
-	Other:
-		jQuery (jquery.com)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+Base template (Solid State) is free for personal and commercial use under the [CCA 3.0 license](https://html5up.net/license). Personal content, images, and customizations are © Tomasz Krzeminski.
