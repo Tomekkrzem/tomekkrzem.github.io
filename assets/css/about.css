@@ -1,0 +1,154 @@
+/*
+	About Page — Banner Heading
+	Overrides the default left-aligned #banner h2 (from main.css) so
+	"About Me" is centered on the page and set larger. Scoped to
+	.about-banner so it doesn't affect #banner on other pages.
+*/
+#banner.about-banner h2 {
+	text-align: center;
+	font-size: 2.75em;
+}
+
+	#banner.about-banner .profile-block {
+		justify-content: center;
+	}
+
+@media screen and (max-width: 980px) {
+
+	#banner.about-banner h2 {
+		font-size: 2em;
+	}
+
+}
+
+@media screen and (max-width: 736px) {
+
+	#banner.about-banner h2 {
+		font-size: 1.6em;
+	}
+
+}
+
+/*
+	About Page — Photo Cluster
+	Extends the existing .wrapper.spotlight .image styling (main.css)
+	to support 3 photos per section instead of 1, using the same
+	circular glow treatment as the rest of the site.
+*/
+
+/* Container: reuses .wrapper.spotlight .image sizing/margin/flip rules
+   from main.css, but disables the single-photo circle + glow so the
+   individual .photo children can each have their own. */
+.wrapper.spotlight .image.gallery {
+	position: relative;
+	overflow: visible;
+	border-radius: 0;
+	aspect-ratio: 1 / 1;
+	margin: 1.5em 3em 5.5em 0;
+}
+
+	.wrapper.spotlight:nth-child(2n - 1) .image.gallery {
+		margin: 1.5em 0 5.5em 3em;
+	}
+
+	.wrapper.spotlight .image.gallery::before {
+		content: none;
+	}
+
+/* Individual photos — all identical size, cropped to a perfect
+   circle regardless of the source image's own proportions, arranged
+   in a triangle that overlaps at rest. */
+.wrapper.spotlight .image.gallery .photo {
+	position: absolute;
+	display: block;
+	width: 56%;
+	aspect-ratio: 1 / 1;
+	border-radius: 100%;
+	overflow: visible;
+	transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+	.wrapper.spotlight .image.gallery .photo::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 220%;
+		height: 220%;
+		transform: translate(-50%, -50%);
+		background: radial-gradient(
+			circle,
+			rgba(255, 255, 255, 0.5) 0%,
+			rgba(46, 49, 65, 0.3) 30%,
+			rgba(46, 49, 65, 0) 60%
+		);
+		z-index: -1;
+		pointer-events: none;
+		transition: background 0.4s ease;
+	}
+
+	.wrapper.spotlight .image.gallery .photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 100%;
+		display: block;
+		position: relative;
+		z-index: 1;
+	}
+
+/* Triangle at rest: primary on top-center, two secondaries at
+   bottom-left / bottom-right, overlapping in the middle. */
+.wrapper.spotlight .image.gallery .photo.primary {
+	top: 0;
+	left: 22%;
+	z-index: 3;
+}
+
+.wrapper.spotlight .image.gallery .photo.secondary-a {
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+}
+
+.wrapper.spotlight .image.gallery .photo.secondary-b {
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+}
+
+/* Hover: the triangle opens up — each photo shifts outward from the
+   center and grows, so the overlap resolves into a clear spread. */
+.wrapper.spotlight .image.gallery:hover .photo.primary {
+	transform: translate(0, -14%) scale(1.25);
+	z-index: 4;
+}
+
+.wrapper.spotlight .image.gallery:hover .photo.secondary-a {
+	transform: translate(-14%, 10%) scale(1.25);
+	z-index: 4;
+}
+
+.wrapper.spotlight .image.gallery:hover .photo.secondary-b {
+	transform: translate(14%, 10%) scale(1.25);
+	z-index: 4;
+}
+
+.wrapper.spotlight .image.gallery:hover .photo::before {
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 0.65) 0%,
+		rgba(46, 49, 65, 0.3) 30%,
+		rgba(46, 49, 65, 0) 60%
+	);
+}
+
+/* Responsive scaling */
+@media screen and (max-width: 480px) {
+
+	.wrapper.spotlight .image.gallery {
+		max-width: 85%;
+		margin: 0 auto 1.5em auto !important;
+	}
+
+}
