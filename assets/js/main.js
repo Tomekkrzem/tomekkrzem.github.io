@@ -155,7 +155,7 @@
 					centerY = height / 2,
 					rotateX = ((y - centerY) / centerY) * -5,
 					rotateY = ((x - centerX) / centerX) * 5;
-				$(this).css('transform', 'perspective(5000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)');
+				$(this).css('transform', 'perspective(5000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.01)');
 			});
 			$tiltImages.on('mouseleave', function() {
 				$(this).css('transform', 'perspective(5000px) rotateX(0deg) rotateY(0deg) scale(1)');
