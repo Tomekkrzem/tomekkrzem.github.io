@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Static Structure Design - Tomasz Krzeminski</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			/* Not in main.css - two small additions for content this theme
+			   doesn't have a built-in component for. */
+			.figure {
+				max-width: 30em;
+				margin: 0 auto 2.5em auto;
+			}
+			.figure img {
+				width: 100%;
+				display: block;
+				border-radius: 5px;
+			}
+			.caption {
+				font-family: Raleway, Helvetica, sans-serif;
+				font-size: 0.7em;
+				font-style: italic;
+				letter-spacing: 0.03em;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.6);
+				margin: 0.75em 0 0 0;
+			}
+			.video-embed {
+				position: relative;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding-bottom: 30.9375%; /* 55em-wide box at 16:9 */
+				height: 0;
+				overflow: hidden;
+				border-radius: 5px;
+				background: rgba(0, 0, 0, 0.2);
+			}
+			.video-embed iframe,
+			.video-embed video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
+			.project-hero {
+				position: relative;
+				min-height: 85vh;
+				display: flex;
+				align-items: flex-end;
+				overflow: hidden;
+				margin: 0;
+			}
+			.project-hero-media {
+				position: absolute;
+				inset: 0;
+			}
+			.project-hero-media img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center 45%;
+				display: block;
+			}
+			.project-hero-overlay {
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(to top, rgba(46,49,65,0.97) 0%, rgba(46,49,65,0.75) 30%, rgba(46,49,65,0.2) 65%, rgba(46,49,65,0.35) 100%);
+			}
+			.project-hero-content {
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding: 4em 2em 3em 2em;
+				text-align: center;
+			}
+			.project-hero-content h2 {
+				font-size: 2.75em;
+				border-bottom: 0;
+				padding-bottom: 0;
+				text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+			}
+			.project-hero-content .project-skills {
+				justify-content: center;
+			}
+			@media screen and (max-width: 980px) {
+				.project-hero-content h2 {
+					font-size: 2em;
+				}
+			}
+			@media screen and (max-width: 736px) {
+				.project-hero {
+					min-height: 60vh;
+				}
+				.project-hero-content h2 {
+					font-size: 1.5em;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Island Navigation -->
+				<nav id="island-nav">
+					<div class="island-trigger">
+						<i class="fas fa-bars"></i>
+						<span>Menu</span>
+					</div>
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../about.html">About Me</a></li>
+						<li><a href="../projects.html" class="active">Projects</a></li>
+						<li><a href="../experience.html">Experience</a></li>
+						<li><a href="../index.html#footer">Contact</a></li>
+					</ul>
+				</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+
+						<!-- Hero -->
+							<section id="hero" class="project-hero">
+								<div class="project-hero-media">
+									<img src="../images/bridge-assembled-photo.jpg" alt="Fully assembled PLA cable-stayed bridge under test setup" />
+								</div>
+								<div class="project-hero-overlay"></div>
+								<div class="project-hero-content">
+									<h2>Static Structure Design</h2>
+									<p>A 30 in, fully 3D-printed PLA bridge with a cable-stayed deck, designed to carry 50 lb at midspan within a 2 cm deflection limit - optimized with a custom Python model before a single part was printed.</p>
+									<div class="project-skills">
+										<span>Structural Analysis</span>
+										<span>SolidWorks</span>
+										<span>Python</span>
+										<span>3D Printing (PLA)</span>
+									</div>
+									<p><strong>Status:</strong> Completed &middot; Winter 2024 &nbsp; <strong>Role:</strong> Team of 3 - structural design, calculations &amp; deflection optimization</p>
+								</div>
+							</section>
+
+						<!-- Overview -->
+							<section id="overview" class="wrapper alt style2">
+								<div class="inner">
+									<h2 class="major">Overview</h2>
+									<p>For CIV ENG 216's design-build-test project, our team of three had to design, build, and test the lightest, most cost-effective bridge that could still satisfy a tight set of specs: a 30 in span, at least 4 in wide, built from only two girders no deeper than 1 in, with no piers, no deck, and columns only at the supports. The bridge had to survive two separate load cases - a single 50 lb point load at midspan, and two 30 lb loads placed L/3 in from each support - while keeping deflection under 2 cm the whole way through incremental 5 lb loading steps. Every part had to be 3D-printed PLA plus fishing-wire cable, and the whole build had to come in under a $300,000 project-cost budget (with a 25% penalty on anything over).</p>
+									<div class="figure">
+										<img src="../images/bridge-figure1-load-cases.jpg" alt="Diagram of the two load cases" />
+										<p class="caption">Load Case 1: 50 lb at midspan. Load Case 2: two 30 lb loads at L/3 from each support.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Challenge -->
+							<section id="challenge" class="wrapper style3">
+								<div class="inner">
+									<h2 class="major">Challenge</h2>
+									<p>The "no deck" rule was the crux of the problem: without a deck to distribute load, the two girders and whatever support structure we designed had to do all the work of staying under 2 cm of deflection, for two different loading patterns, using a material we didn't fully trust yet. In the weeks before the final build, we ran compressive, tensile, and flexural tests on PLA coupons printed at different infills and print orientations, since PLA's strength and stiffness change noticeably depending on how it's printed relative to the load. Those results - not textbook values - had to drive every dimension we chose, which meant the design couldn't be finalized until the material was actually characterized.</p>
+									<div class="figure">
+										<img src="../images/bridge-figure2-brainstorming.jpg" alt="Initial brainstorming sketches of candidate bridge designs" />
+										<p class="caption">Early brainstorming: several truss-arch and Warren-truss variants were sketched before settling on a cable-supported deck.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Approach -->
+							<section id="approach" class="wrapper alt style4">
+								<div class="inner">
+									<h2 class="major">Approach</h2>
+									<p>We landed on a cable-stayed design: two printed columns, four girders forming the deck, and 8 cables (4 per side) running diagonally from the column tops down to points along the girders, putting the deck in a suspension-like system that counteracts the vertical load during testing. Printed anchors at the base resist the horizontal component of cable tension so the columns don't get pulled inward.</p>
+									<div class="figure">
+										<img src="../images/bridge-figure3-initial-concept.jpg" alt="Bridge concept diagram showing the two-column, 8-cable layout" />
+										<p class="caption">Concept: two columns, 8 diagonal cables, and printed anchors resisting horizontal cable tension.</p>
+									</div>
+									<p>Column height and cable insertion point turned out to be the two parameters that mattered most, so we wrote a Python model combining beam-deflection and cable-tension equations to sweep across both and find the combination that minimized the cable tension needed to hold 50 lb - which also kept material cost down, since cable was priced per centimeter.</p>
+									<div class="figure">
+										<img src="../images/bridge-figure4-fbd.jpg" alt="Free body diagram of the bridge used in the optimization model" />
+										<p class="caption">Free body diagram used to derive the tension and reaction equations solved in the optimization script.</p>
+									</div>
+									<div class="figure">
+										<img src="../images/bridge-figure5a-tension.jpg" alt="Cable tension vs. cable insertion distance for various column heights" />
+										<p class="caption">Required cable tension across column heights - the basis for choosing an 8 in column height and a 9 in cable insertion point.</p>
+									</div>
+									<div class="figure">
+										<img src="../images/bridge-figure5b-deflection.jpg" alt="Predicted deflection profile across the span for various loads" />
+										<p class="caption">Modeled deflection across the span at 5 lb increments up to 50 lb, confirming the design would stay under the 2 cm limit.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Result -->
+							<section id="result" class="wrapper style5">
+								<div class="inner">
+									<h2 class="major">Result</h2>
+									<p>With the optimized geometry set, we ran the final hand calculations against the PLA properties from our own lab testing, and every failure mode came back with a wide margin. Column buckling: a critical load of 977.6 lb against an actual load of about 61 lb - over 10x margin. Compressive stress in the columns: 76 PSI against a 6,760 PSI yield strength. Girder tensile stress from cable tension: 86 PSI against a 2,411 PSI yield. Bending stress: up to 535 PSI against a bending strength of roughly 5,922 PSI. On the cost side, the finished bill of materials - girders, columns, anchors, cable, and all joints - came in at $299,676, just under the $300,000 cap.</p>
+									<div class="figure">
+										<img src="../images/bridge-figure6-shear-moment.jpg" alt="Shear and moment diagrams for the girder under the two-load case" />
+										<p class="caption">Shear and moment diagrams for the girder, used to size it against bending and shear stress.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Video Demo -->
+							<section id="video-demo" class="wrapper alt style2">
+								<div class="inner">
+									<h2 class="major">Video Demo</h2>
+									<div class="video-embed">
+										<!--
+											Swap in the real embed URL once you have a video, e.g.:
+											<iframe src="https://www.youtube.com/embed/VIDEO_ID" title="PLA Cable-Stayed Bridge load test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+										-->
+										<iframe src="{{VIDEO_EMBED_URL}}" title="PLA Cable-Stayed Bridge load test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+									</div>
+									<p class="caption">Load-test footage placeholder - drop in the embed link once the video's up.</p>
+								</div>
+							</section>
+
+						<!-- Gallery -->
+							<section id="gallery" class="wrapper alt style1">
+								<div class="inner">
+									<h2 class="major">Gallery</h2>
+									<section class="features">
+										<article>
+											<a href="../images/bridge-cad-girders.jpg" class="image"><img src="../images/bridge-cad-girders.jpg" alt="CAD drawing of the bridge girders" /></a>
+										</article>
+										<article>
+											<a href="../images/bridge-cad-anchor.jpg" class="image"><img src="../images/bridge-cad-anchor.jpg" alt="CAD drawing of the printed anchor" /></a>
+										</article>
+										<article>
+											<a href="../images/bridge-cad-column.jpg" class="image"><img src="../images/bridge-cad-column.jpg" alt="CAD drawing of the column" /></a>
+										</article>
+										<article>
+											<a href="../images/bridge-cad-cross-beams.jpg" class="image"><img src="../images/bridge-cad-cross-beams.jpg" alt="CAD drawing of the cross beams" /></a>
+										</article>
+										<article>
+											<a href="../images/bridge-cad-front-view.jpg" class="image"><img src="../images/bridge-cad-front-view.jpg" alt="Rendered front view of the assembled bridge" /></a>
+										</article>
+										<article>
+											<a href="../images/bridge-assembled-photo.jpg" class="image"><img src="../images/bridge-assembled-photo.jpg" alt="Fully assembled bridge under test setup" /></a>
+										</article>
+									</section>
+									<ul class="actions">
+										<li><a href="../projects.html" class="button">Back to Projects</a></li>
+									</ul>
+								</div>
+							</section>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>

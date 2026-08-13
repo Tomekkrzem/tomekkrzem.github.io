@@ -9,6 +9,56 @@
 	font-size: 2.75em;
 }
 
+	/* Banner Image Container */
+	#banner.about-banner .image {
+		position: relative;
+		width: 20em;
+		aspect-ratio: 4/5;
+
+		border-radius: 24px;
+		overflow: visible;
+
+		display: block;
+	}
+
+	/* Soft glow behind card */
+	#banner.about-banner .image::before {
+		content: '';
+		position: absolute;
+		inset: -10%;
+
+		border-radius: 30px;
+
+		background: radial-gradient(
+			ellipse,
+			rgba(255,255,255,0.25) 0%,
+			rgba(76,92,150,0.18) 45%,
+			transparent 80%
+		);
+
+		filter: blur(35px);
+		z-index: 0;
+		pointer-events: none;
+	}
+
+	/* Glass card image */
+	#banner.about-banner .image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+
+		border-radius: 24px;
+
+		border: 1px solid rgba(255,255,255,0.15);
+
+		box-shadow:
+			0 12px 32px rgba(0,0,0,0.25),
+			0 2px 8px rgba(255,255,255,0.08);
+
+		position: relative;
+		z-index: 1;
+	}
+
 	#banner.about-banner .profile-block {
 		justify-content: center;
 	}
@@ -45,14 +95,15 @@
 	border-radius: 0;
 	aspect-ratio: 1 / 1;
 	margin: 1.5em 3em 5.5em 0;
+
+	box-shadow: none !important;
+	filter: none !important;
+	background: transparent !important;
+
 }
 
 	.wrapper.spotlight:nth-child(2n - 1) .image.gallery {
 		margin: 1.5em 0 5.5em 3em;
-	}
-
-	.wrapper.spotlight .image.gallery::before {
-		content: none;
 	}
 
 /* Individual photos — all identical size, cropped to a perfect
@@ -120,17 +171,17 @@
 /* Hover: the triangle opens up — each photo shifts outward from the
    center and grows, so the overlap resolves into a clear spread. */
 .wrapper.spotlight .image.gallery:hover .photo.primary {
-	transform: translate(0, -14%) scale(1.25);
+	transform: translate(0, -26%) scale(1.25);
 	z-index: 4;
 }
 
 .wrapper.spotlight .image.gallery:hover .photo.secondary-a {
-	transform: translate(-14%, 10%) scale(1.25);
+	transform: translate(-26%, 10%) scale(1.25);
 	z-index: 4;
 }
 
 .wrapper.spotlight .image.gallery:hover .photo.secondary-b {
-	transform: translate(14%, 10%) scale(1.25);
+	transform: translate(26%, 10%) scale(1.25);
 	z-index: 4;
 }
 
