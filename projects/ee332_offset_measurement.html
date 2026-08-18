@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Offset Measurement Using Computer Vision - Tomasz Krzeminski</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<script>
+			MathJax = {
+				tex: { inlineMath: [['\\(', '\\)']] },
+				chtml: { displayAlign: 'center' }
+			};
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+		<style>
+			.figure {
+				max-width: 30em;
+				margin: 0 auto 2.5em auto;
+			}
+			.figure img {
+				width: 100%;
+				display: block;
+				border-radius: 5px;
+			}
+			.caption {
+				font-family: Raleway, Helvetica, sans-serif;
+				font-size: 0.85em;
+				font-weight: 600;
+				font-style: italic;
+				letter-spacing: 0.03em;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.75);
+				margin: 0.75em 0 0 0;
+			}
+			.figure-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2em;
+				justify-content: center;
+				max-width: 60em;
+				margin: 0 auto 2.5em auto;
+			}
+			.figure-row .figure {
+				flex: 1 1 22em;
+				max-width: 26em;
+				margin-bottom: 0;
+			}
+			.video-embed {
+				position: relative;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding-bottom: 30.9375%;
+				height: 0;
+				overflow: hidden;
+				border-radius: 5px;
+				background: rgba(0, 0, 0, 0.2);
+			}
+			.video-embed iframe,
+			.video-embed video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
+			.project-hero {
+				position: relative;
+				min-height: 85vh;
+				display: flex;
+				align-items: flex-end;
+				overflow: hidden;
+				margin: 0;
+			}
+			.project-hero-media {
+				position: absolute;
+				inset: 0;
+			}
+			.project-hero-media img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center center;
+				display: block;
+			}
+			.project-hero-overlay {
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(to top, rgba(20,21,29,0.98) 0%, rgba(20,21,29,0.9) 30%, rgba(20,21,29,0.55) 65%, rgba(20,21,29,0.65) 100%);
+			}
+			.project-hero-content {
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding: 4em 2em 3em 2em;
+				text-align: center;
+			}
+			.project-hero-content h2 {
+				font-size: 2.75em;
+				border-bottom: 0;
+				padding-bottom: 0;
+				text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+			}
+			.project-hero-content p {
+				font-weight: 600;
+			}
+			.project-hero-content .project-skills {
+				justify-content: center;
+			}
+			.project-hero-content .project-skills span {
+				font-size: 0.95rem;
+				padding: 0.45rem 1rem;
+			}
+			.hero-links {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1em;
+				flex-wrap: wrap;
+				margin: 1.5em 0 0 0;
+			}
+			.hero-github-link,
+			.hero-report-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				margin: 0;
+			}
+			.hero-github-link i,
+			.hero-report-link i {
+				font-size: 1.1em;
+			}
+			.project-hero + .wrapper:before {
+				content: none;
+			}
+			.project-hero + .wrapper {
+				margin-top: 0;
+			}
+			@media screen and (max-width: 980px) {
+				.project-hero-content h2 {
+					font-size: 2em;
+				}
+			}
+			@media screen and (max-width: 736px) {
+				.project-hero {
+					min-height: 60vh;
+				}
+				.project-hero-content h2 {
+					font-size: 1.5em;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Island Navigation -->
+				<nav id="island-nav">
+					<div class="island-trigger">
+						<i class="fas fa-bars"></i>
+						<span>Menu</span>
+					</div>
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../about.html">About Me</a></li>
+						<li><a href="../projects.html" class="active">Projects</a></li>
+						<li><a href="../experience.html">Experience</a></li>
+						<li><a href="../index.html#footer">Contact</a></li>
+					</ul>
+				</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+
+						<!-- Hero -->
+							
+<section id="hero" class="project-hero">
+  <div class="project-hero-media"><img src="../images/project_images/offset_measure/report_p20_img1.png" alt="Computer vision offset measurements on rotated objects" /></div>
+  <div class="project-hero-overlay"></div>
+  <div class="project-hero-content">
+    <h2>Offset Measurement Using Computer Vision</h2>
+    <p>Building a real-time vision system to measure object geometry and internal-feature offsets, including rotationally invariant measurements from a webcam stream.</p>
+    <div class="project-skills">
+      <span>Computer Vision</span><span>Python</span><span>OpenCV</span><span>Image Processing</span><span>Geometric Measurement</span>
+    </div>
+    <p><strong>Status:</strong> Completed &middot; Fall 2025 (EE 332)</p>
+    <div class="hero-links">
+      <a href="https://github.com/Tomekkrzem/EE332-Final" class="button icon solid fa-github hero-github-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> View Repository on GitHub</a>
+	  <li><a href="project_reports/EE332 Final Project.pdf" class="button icon solid fa-file-pdf" target="_blank" rel="noopener">View Full Report</a></li>
+    </div>
+  </div>
+</section> 	
+
+						<!-- Overview -->
+							
+<section id="overview" class="wrapper alt style2"><div class="inner">
+<h2 class="major">Overview</h2>
+<p>This project develops computer-vision software for quickly measuring the geometric properties of an object and the offsets between its centroid and the centroids of internal features such as holes or engravings. The motivation is industrial inspection, where manual feature measurements can slow production changeovers and introduce human error.</p>
+<p>The tool measures circular diameters or bounding-box widths and heights, identifies object and feature centroids, converts pixel measurements to physical units using a known reference object, and visualizes feature offsets in an intuitive output.</p>
+<div class="figure"><img src="../images/project_images/offset_measure/report_p6_img1.png" alt="Stage 1 computer vision implementation pipeline" /><p class="caption">The implementation pipeline progresses from preprocessing and edge detection to geometric-property extraction and offset measurement.</p></div>
+</div></section>
+
+						<!-- Challenge -->
+							
+<section id="challenge" class="wrapper style3"><div class="inner">
+<h2 class="major">Challenge</h2>
+<p>Synthetic test images are deterministic, but live camera images introduce lighting variation, lens distortion, camera-pose misalignment, projection effects, noise, and object rotation. These effects make both edge detection and physical measurement less stable.</p>
+<p>A particularly important challenge is rotation. Measuring centroid differences directly in the image frame makes the reported x- and y-offsets change when the same object is rotated. The system therefore needs to estimate the object's orientation and express offsets relative to the object's own coordinate frame.</p>
+<div class="figure"><img src="../images/project_images/offset_measure/report_p16_img1.png" alt="Image frame and object frame used for rotationally invariant measurement" /><p class="caption">Defining separate image and object coordinate frames makes it possible to transform feature offsets into a rotationally invariant representation.</p></div>
+</div></section>
+
+						<!-- Approach -->
+							
+<section id="approach" class="wrapper alt style4"><div class="inner">
+<h2 class="major">Approach</h2>
+<p>The implementation was developed in two stages. Stage 1 established the pipeline on simple generated images. Images were contrast-equalized, Gaussian blurred, bilateral filtered, and processed with adaptive Canny thresholds derived using Otsu's method. A morphological closing operation then improved edge connectivity for contour extraction.</p>
+<div class="figure"><img src="../images/project_images/offset_measure/report_p13_img1.png" alt="Preprocessing and edge detection results" /><p class="caption">Real-image processing combines contrast enhancement, smoothing, Canny edge detection, and morphological closing.</p></div>
+<p>Contours and their hierarchy are used to distinguish outer objects from internal features. Centroids are computed from image moments. Circularity determines whether a circular bounding region or rectangular bounding box is used, allowing diameter, width, and height measurements to be extracted.</p>
+<div class="figure"><img src="../images/project_images/offset_measure/report_p14_img1.png" alt="Known-size quarter used to configure physical measurement units" /><p class="caption">A quarter with known diameter provides the pixel-to-inch or pixel-to-millimeter scaling factor.</p></div>
+<p>Stage 2 adapts the pipeline to webcam input. CLAHE replaces global histogram equalization to improve local contrast, a known-size reference establishes physical units, and coordinate transformation is introduced so centroid offsets remain consistent as an object rotates.</p>
+</div></section>
+
+						<!-- Result -->
+							
+<section id="result" class="wrapper style5"><div class="inner">
+<h2 class="major">Result</h2>
+<p>Testing showed that the program could measure geometric properties and feature offsets across multiple objects, varying object sizes, and differing numbers of internal features. It correctly identified concentric features as having zero offset and could classify and measure circular reference objects.</p>
+<div class="figure"><img src="../images/project_images/offset_measure/report_p20_img2.png" alt="Rotated objects with rotationally invariant offset measurements" /><p class="caption">The final implementation handles rotated objects and reports internal-feature offsets relative to the object frame.</p></div>
+<p>The rotational-invariance extension produced offset measurements that remained consistent as objects were rotated. The main limitation was measurement stability in live video: lighting changes, reflective surfaces, camera alignment, and calibration could cause frame-to-frame variation. Proposed improvements include camera calibration, a controlled testbed and lighting, broader object testing, measurement stabilization with a Kalman filter, and automatic unit calibration.</p>
+</div></section>
+
+						<!-- Code -->
+							
+<section id="code" class="wrapper alt style1"><div class="inner">
+<h2 class="major">Full Report</h2>
+<p>The project implementation covers preprocessing, adaptive edge detection, contour hierarchy, centroid and geometric-property extraction, physical-unit calibration, offset measurement, and rotational invariance for live camera input.</p>
+<ul class="actions">
+<li><a href="project_reports/EE332 Final Project.pdf" class="button icon solid fa-file-pdf" target="_blank" rel="noopener">View Full Report</a></li>
+</ul>
+</div></section>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>KUKA youBot Mobile Manipulation - Tomasz Krzeminski</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+
+		<script>
+			MathJax = {
+				tex: { inlineMath: [['\\(', '\\)']] },
+				chtml: { displayAlign: 'center' }
+			};
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+
+		<style>
+			.figure {
+				max-width: 30em;
+				margin: 0 auto 2.5em auto;
+			}
+
+			.figure img {
+				width: 100%;
+				display: block;
+				border-radius: 5px;
+			}
+
+			.caption {
+				font-family: Raleway, Helvetica, sans-serif;
+				font-size: 0.85em;
+				font-weight: 600;
+				font-style: italic;
+				letter-spacing: 0.03em;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.75);
+				margin: 0.75em 0 0 0;
+			}
+
+			.figure-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2em;
+				justify-content: center;
+				max-width: 60em;
+				margin: 0 auto 2.5em auto;
+			}
+
+			.figure-row .figure {
+				flex: 1 1 22em;
+				max-width: 26em;
+				margin-bottom: 0;
+			}
+
+			.video-embed {
+				position: relative;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding-bottom: 30.9375%;
+				height: 0;
+				overflow: hidden;
+				border-radius: 5px;
+				background: rgba(0, 0, 0, 0.2);
+			}
+
+			.video-embed iframe,
+			.video-embed video,
+			.video-embed img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+				object-fit: contain;
+			}
+
+			.gif-embed img {
+				display: block;
+			}
+
+			/* Keep result GIFs exactly the same size */
+			.figure-row .video-embed {
+				width: 100%;
+				height: 260px;
+				padding-bottom: 0;
+			}
+
+			.figure-row .video-embed img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				display: block;
+			}
+
+			.project-hero {
+				position: relative;
+				min-height: 85vh;
+				display: flex;
+				align-items: flex-end;
+				overflow: hidden;
+				margin: 0;
+			}
+
+			.project-hero-media {
+				position: absolute;
+				inset: 0;
+			}
+
+			.project-hero-media img,
+			.project-hero-media video {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center center;
+				display: block;
+			}
+
+			.project-hero-overlay {
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(
+					to top,
+					rgba(20,21,29,0.98) 0%,
+					rgba(20,21,29,0.9) 30%,
+					rgba(20,21,29,0.55) 65%,
+					rgba(20,21,29,0.65) 100%
+				);
+			}
+
+			.project-hero-content {
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding: 4em 2em 3em 2em;
+				text-align: center;
+			}
+
+			.project-hero-content h2 {
+				font-size: 2.75em;
+				border-bottom: 0;
+				padding-bottom: 0;
+				text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+			}
+
+			.project-hero-content p {
+				font-weight: 600;
+			}
+
+			.project-hero-content .project-skills {
+				justify-content: center;
+			}
+
+			.project-hero-content .project-skills span {
+				font-size: 0.95rem;
+				padding: 0.45rem 1rem;
+			}
+
+			.hero-links {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1em;
+				flex-wrap: wrap;
+				margin: 1.5em 0 0 0;
+			}
+
+			.hero-github-link,
+			.hero-report-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				margin: 0;
+			}
+
+			.hero-github-link i,
+			.hero-report-link i {
+				font-size: 1.1em;
+			}
+
+			.project-hero + .wrapper:before {
+				content: none;
+			}
+
+			.project-hero + .wrapper {
+				margin-top: 0;
+			}
+
+			@media screen and (max-width: 980px) {
+				.project-hero-content h2 {
+					font-size: 2em;
+				}
+			}
+
+			@media screen and (max-width: 736px) {
+				.project-hero {
+					min-height: 60vh;
+				}
+
+				.project-hero-content h2 {
+					font-size: 1.5em;
+				}
+
+				.figure-row .video-embed {
+					height: 220px;
+				}
+			}
+		</style>
+	</head>
+
+	<body class="is-preload">
+
+		<div id="page-wrapper">
+
+			<!-- Island Navigation -->
+			<nav id="island-nav">
+				<div class="island-trigger">
+					<i class="fas fa-bars"></i>
+					<span>Menu</span>
+				</div>
+				<ul>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../about.html">About Me</a></li>
+					<li><a href="../projects.html" class="active">Projects</a></li>
+					<li><a href="../experience.html">Experience</a></li>
+					<li><a href="../index.html#footer">Contact</a></li>
+				</ul>
+			</nav>
+
+			<section id="wrapper">
+
+				<!-- Hero -->
+				<section id="hero" class="project-hero">
+					<div class="project-hero-media">
+						<img
+							src="../images/project_images/kuka_modern_robotics/kuka_hero.png"
+							alt="Kuka Robot"
+						/>
+					</div>
+
+					<div class="project-hero-overlay"></div>
+
+					<div class="project-hero-content">
+						<h2>KUKA youBot Mobile Manipulation</h2>
+
+						<p>
+							Planning and controlling a mobile manipulator to autonomously
+							pick up and reposition a cube in CoppeliaSim.
+						</p>
+
+						<div class="project-skills">
+							<span>Robotic Manipulation</span>
+							<span>Python</span>
+							<span>Modern Robotics</span>
+							<span>Task-Space Control</span>
+							<span>CoppeliaSim</span>
+						</div>
+
+						<p>
+							<strong>Status:</strong>
+							Completed &middot; Fall 2025 (ME449)
+						</p>
+
+						<div class="hero-links">
+							<a
+								href="https://github.com/Tomekkrzem/ME-449-Final-Project"
+								class="button icon solid fa-github hero-github-link"
+								target="_blank"
+								rel="noopener"
+							>
+								<i class="fab fa-github"></i>
+								View Repository on GitHub
+							</a>
+						</div>
+					</div>
+				</section>
+
+				<!-- Overview -->
+				<section id="overview" class="wrapper alt style2">
+					<div class="inner">
+						<h2 class="major">Overview</h2>
+
+						<p>
+							This project implements a complete manipulation pipeline for a
+							KUKA youBot in CoppeliaSim. The robot drives to a cube,
+							positions its arm and gripper, grasps the cube, transports it
+							across the scene, and places it at a desired final configuration.
+						</p>
+
+						<p>
+							The program generates a reference end-effector trajectory,
+							tracks it with a feedforward-plus-PI controller, converts the
+							commanded end-effector twist into arm-joint and mecanum-wheel
+							velocities, and propagates the robot configuration through the
+							simulation.
+						</p>
+
+						<div class="video-embed gif-embed">
+							<img
+								src="../images/project_images/kuka_modern_robotics/best.gif"
+								alt="Optimized controller completing the standard pick-and-place task"
+							/>
+						</div>
+
+						<p class="caption">
+							Optimized controller completing the standard pick-and-place task.
+						</p>
+					</div>
+				</section>
+
+				<!-- Challenge -->
+				<section id="challenge" class="wrapper style3">
+					<div class="inner">
+						<h2 class="major">Challenge</h2>
+
+						<p>
+							The task couples a five-joint robotic arm with a four-wheel
+							omnidirectional mobile base. Reaching the desired end-effector
+							pose requires coordinating both systems while continuously
+							correcting tracking error.
+						</p>
+
+						<p>
+							The controller must also follow a multi-segment trajectory that
+							includes approaching the cube, descending to the grasp pose,
+							closing the gripper, transporting the cube, and releasing it at
+							the target. Poor gain selection can produce large tracking error
+							or overshoot.
+						</p>
+					</div>
+				</section>
+
+				<!-- Approach -->
+				<section id="approach" class="wrapper alt style4">
+					<div class="inner">
+						<h2 class="major">Approach</h2>
+
+						<p>
+							The implementation was organized around three milestones.
+							<strong>NextState</strong> propagates the youBot configuration
+							from wheel and joint velocities while enforcing actuator limits.
+							<strong>TrajectoryGenerator</strong> creates the reference
+							end-effector poses for the full pick-and-place sequence.
+							<strong>FeedbackControl</strong> computes the commanded
+							end-effector twist using task-space feedforward control with
+							proportional and integral feedback.
+						</p>
+
+						<p>
+							At each timestep, the program evaluates the current pose and
+							reference pose, computes task-space error, generates a desired
+							twist, and maps that twist through the combined arm-and-base
+							Jacobian to wheel and arm-joint velocity commands. The next
+							robot configuration is then computed and logged for CoppeliaSim.
+						</p>
+					</div>
+				</section>
+
+				<!-- Result -->
+				<section id="result" class="wrapper style5">
+					<div class="inner">
+						<h2 class="major">Result</h2>
+
+						<p>
+							The best-performing standard task used a feedforward-plus-PI
+							controller with <strong>Kp = 30</strong>,
+							<strong>Ki = 0.2</strong>, a <strong>0.01 s</strong> timestep,
+							and a velocity limit of <strong>15</strong>. With these
+							parameters, the youBot successfully tracks the trajectory,
+							grasps the cube, transports it, and places it at the goal.
+						</p>
+
+						<div class="video-embed gif-embed">
+							<img
+								src="../images/project_images/kuka_modern_robotics/best.gif"
+								alt="Best-tuned controller on the standard task"
+							/>
+						</div>
+
+						<p class="caption">
+							Best-tuned controller on the standard task.
+						</p>
+
+						<p>
+							The repository also includes an overshoot case and a custom-task
+							case, demonstrating how controller tuning affects tracking and
+							how the same manipulation pipeline adapts to a different cube
+							start and goal configuration.
+						</p>
+
+						<div class="figure-row">
+
+							<div class="figure">
+								<div class="video-embed gif-embed">
+									<img
+										src="../images/project_images/kuka_modern_robotics/overshoot.gif"
+										alt="Overshoot controller simulation"
+									/>
+								</div>
+
+								<p class="caption">
+									Overshoot case with less effective PI gains.
+								</p>
+							</div>
+
+							<div class="figure">
+								<div class="video-embed gif-embed">
+									<img
+										src="../images/project_images/kuka_modern_robotics/new_task.gif"
+										alt="Custom-task simulation"
+									/>
+								</div>
+
+								<p class="caption">
+									Custom-task simulation.
+								</p>
+							</div>
+
+						</div>
+					</div>
+				</section>
+
+				<!-- Code -->
+				<section id="code" class="wrapper alt style1">
+					<div class="inner">
+						<h2 class="major">Results</h2>
+
+						<p>
+							The repository contains the full Python implementation for
+							state propagation, trajectory generation, task-space feedback
+							control, configuration files, milestone tests, and simulation
+							outputs.
+						</p>
+
+						<ul class="actions">
+							<li>
+								<a
+									href="https://github.com/Tomekkrzem/ME-449-Final-Project/blob/master/results/best/best.pdf"
+									class="button icon solid fa-file-pdf"
+									target="_blank"
+									rel="noopener"
+								>
+									Best Error Plot
+								</a>
+							</li>
+
+							<li>
+								<a href="../projects.html" class="button">
+									Back to Projects
+								</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+
+			</section>
+
+			<!-- Footer -->
+			<section id="footer">
+				<div class="inner"></div>
+			</section>
+
+		</div>
+
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../assets/js/browser.min.js"></script>
+		<script src="../assets/js/breakpoints.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
