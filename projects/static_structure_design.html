@@ -7,8 +7,8 @@
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 		<style>
-			/* Not in main.css - two small additions for content this theme
-			   doesn't have a built-in component for. */
+			/* Not in main.css - additions for content this theme doesn't
+			   have a built-in component for. */
 			.figure {
 				max-width: 30em;
 				margin: 0 auto 2.5em auto;
@@ -20,11 +20,12 @@
 			}
 			.caption {
 				font-family: Raleway, Helvetica, sans-serif;
-				font-size: 0.7em;
+				font-size: 0.85em;
+				font-weight: 600;
 				font-style: italic;
 				letter-spacing: 0.03em;
 				text-align: center;
-				color: rgba(255, 255, 255, 0.6);
+				color: rgba(255, 255, 255, 0.75);
 				margin: 0.75em 0 0 0;
 			}
 			.video-embed {
@@ -69,7 +70,7 @@
 			.project-hero-overlay {
 				position: absolute;
 				inset: 0;
-				background: linear-gradient(to top, rgba(46,49,65,0.97) 0%, rgba(46,49,65,0.75) 30%, rgba(46,49,65,0.2) 65%, rgba(46,49,65,0.35) 100%);
+				background: linear-gradient(to top, rgba(20,21,29,0.98) 0%, rgba(20,21,29,0.9) 30%, rgba(20,21,29,0.55) 65%, rgba(20,21,29,0.65) 100%);
 			}
 			.project-hero-content {
 				position: relative;
@@ -86,8 +87,52 @@
 				padding-bottom: 0;
 				text-shadow: 0 2px 20px rgba(0,0,0,0.5);
 			}
+			.project-hero-content p {
+				font-weight: 600;
+			}
 			.project-hero-content .project-skills {
 				justify-content: center;
+			}
+			.project-hero-content .project-skills span {
+				font-size: 0.95rem;
+				padding: 0.45rem 1rem;
+			}
+			.hero-github-link,
+			.hero-report-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				margin: 0;
+			}
+			.hero-github-link i,
+			.hero-report-link i {
+				font-size: 1.1em;
+			}
+			.hero-links {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1em;
+				flex-wrap: wrap;
+				margin: 1.5em 0 0 0;
+			}
+			/* The theme's .wrapper sections use a diagonal ::before triangle,
+			   filled with their own solid background color, to create a
+			   folded-paper transition from the previous section. The hero
+			   above is a full-bleed image banner, not a flat-colored
+			   .wrapper, so that triangle has nothing consistent to blend
+			   into - it would show up as a mismatched solid wedge over the
+			   bottom of the hero image. This removes it from whichever
+			   .wrapper section immediately follows the hero (selector-based,
+			   so it keeps working no matter what the section is named).
+			   The triangle normally also visually fills that section's
+			   6.5em top margin, so that margin is zeroed out too, otherwise
+			   removing the triangle leaves a blank gap. */
+			.project-hero + .wrapper:before {
+				content: none;
+			}
+			.project-hero + .wrapper {
+				margin-top: 0;
 			}
 			@media screen and (max-width: 980px) {
 				.project-hero-content h2 {
@@ -130,7 +175,7 @@
 						<!-- Hero -->
 							<section id="hero" class="project-hero">
 								<div class="project-hero-media">
-									<img src="../images/bridge-assembled-photo.jpg" alt="Fully assembled PLA cable-stayed bridge under test setup" />
+									<img src="../images/project_images/static_structure/bridge-assembled-photo.jpg" alt="Fully assembled PLA cable-stayed bridge under test setup" />
 								</div>
 								<div class="project-hero-overlay"></div>
 								<div class="project-hero-content">
@@ -142,7 +187,7 @@
 										<span>Python</span>
 										<span>3D Printing (PLA)</span>
 									</div>
-									<p><strong>Status:</strong> Completed &middot; Winter 2024 &nbsp; <strong>Role:</strong> Team of 3 - structural design, calculations &amp; deflection optimization</p>
+									<p><strong>Status:</strong> Completed &middot; Winter 2024 (CIV_ENG 216) &nbsp;</p>
 								</div>
 							</section>
 
@@ -152,7 +197,7 @@
 									<h2 class="major">Overview</h2>
 									<p>For CIV ENG 216's design-build-test project, our team of three had to design, build, and test the lightest, most cost-effective bridge that could still satisfy a tight set of specs: a 30 in span, at least 4 in wide, built from only two girders no deeper than 1 in, with no piers, no deck, and columns only at the supports. The bridge had to survive two separate load cases - a single 50 lb point load at midspan, and two 30 lb loads placed L/3 in from each support - while keeping deflection under 2 cm the whole way through incremental 5 lb loading steps. Every part had to be 3D-printed PLA plus fishing-wire cable, and the whole build had to come in under a $300,000 project-cost budget (with a 25% penalty on anything over).</p>
 									<div class="figure">
-										<img src="../images/bridge-figure1-load-cases.jpg" alt="Diagram of the two load cases" />
+										<img src="../images/project_images/static_structure/bridge-figure1-load-cases.jpg" alt="Diagram of the two load cases" />
 										<p class="caption">Load Case 1: 50 lb at midspan. Load Case 2: two 30 lb loads at L/3 from each support.</p>
 									</div>
 								</div>
@@ -164,7 +209,7 @@
 									<h2 class="major">Challenge</h2>
 									<p>The "no deck" rule was the crux of the problem: without a deck to distribute load, the two girders and whatever support structure we designed had to do all the work of staying under 2 cm of deflection, for two different loading patterns, using a material we didn't fully trust yet. In the weeks before the final build, we ran compressive, tensile, and flexural tests on PLA coupons printed at different infills and print orientations, since PLA's strength and stiffness change noticeably depending on how it's printed relative to the load. Those results - not textbook values - had to drive every dimension we chose, which meant the design couldn't be finalized until the material was actually characterized.</p>
 									<div class="figure">
-										<img src="../images/bridge-figure2-brainstorming.jpg" alt="Initial brainstorming sketches of candidate bridge designs" />
+										<img src="../images/project_images/static_structure/bridge-figure2-brainstorming.jpg" alt="Initial brainstorming sketches of candidate bridge designs" />
 										<p class="caption">Early brainstorming: several truss-arch and Warren-truss variants were sketched before settling on a cable-supported deck.</p>
 									</div>
 								</div>
@@ -176,20 +221,20 @@
 									<h2 class="major">Approach</h2>
 									<p>We landed on a cable-stayed design: two printed columns, four girders forming the deck, and 8 cables (4 per side) running diagonally from the column tops down to points along the girders, putting the deck in a suspension-like system that counteracts the vertical load during testing. Printed anchors at the base resist the horizontal component of cable tension so the columns don't get pulled inward.</p>
 									<div class="figure">
-										<img src="../images/bridge-figure3-initial-concept.jpg" alt="Bridge concept diagram showing the two-column, 8-cable layout" />
+										<img src="../images/project_images/static_structure/bridge-figure3-initial-concept.jpg" alt="Bridge concept diagram showing the two-column, 8-cable layout" />
 										<p class="caption">Concept: two columns, 8 diagonal cables, and printed anchors resisting horizontal cable tension.</p>
 									</div>
 									<p>Column height and cable insertion point turned out to be the two parameters that mattered most, so we wrote a Python model combining beam-deflection and cable-tension equations to sweep across both and find the combination that minimized the cable tension needed to hold 50 lb - which also kept material cost down, since cable was priced per centimeter.</p>
 									<div class="figure">
-										<img src="../images/bridge-figure4-fbd.jpg" alt="Free body diagram of the bridge used in the optimization model" />
+										<img src="../images/project_images/static_structure/bridge-figure4-fbd.jpg" alt="Free body diagram of the bridge used in the optimization model" />
 										<p class="caption">Free body diagram used to derive the tension and reaction equations solved in the optimization script.</p>
 									</div>
 									<div class="figure">
-										<img src="../images/bridge-figure5a-tension.jpg" alt="Cable tension vs. cable insertion distance for various column heights" />
+										<img src="../images/project_images/static_structure/bridge-figure5a-tension.jpg" alt="Cable tension vs. cable insertion distance for various column heights" />
 										<p class="caption">Required cable tension across column heights - the basis for choosing an 8 in column height and a 9 in cable insertion point.</p>
 									</div>
 									<div class="figure">
-										<img src="../images/bridge-figure5b-deflection.jpg" alt="Predicted deflection profile across the span for various loads" />
+										<img src="../images/project_images/static_structure/bridge-figure5b-deflection.jpg" alt="Predicted deflection profile across the span for various loads" />
 										<p class="caption">Modeled deflection across the span at 5 lb increments up to 50 lb, confirming the design would stay under the 2 cm limit.</p>
 									</div>
 								</div>
@@ -201,7 +246,7 @@
 									<h2 class="major">Result</h2>
 									<p>With the optimized geometry set, we ran the final hand calculations against the PLA properties from our own lab testing, and every failure mode came back with a wide margin. Column buckling: a critical load of 977.6 lb against an actual load of about 61 lb - over 10x margin. Compressive stress in the columns: 76 PSI against a 6,760 PSI yield strength. Girder tensile stress from cable tension: 86 PSI against a 2,411 PSI yield. Bending stress: up to 535 PSI against a bending strength of roughly 5,922 PSI. On the cost side, the finished bill of materials - girders, columns, anchors, cable, and all joints - came in at $299,676, just under the $300,000 cap.</p>
 									<div class="figure">
-										<img src="../images/bridge-figure6-shear-moment.jpg" alt="Shear and moment diagrams for the girder under the two-load case" />
+										<img src="../images/project_images/static_structure/bridge-figure6-shear-moment.jpg" alt="Shear and moment diagrams for the girder under the two-load case" />
 										<p class="caption">Shear and moment diagrams for the girder, used to size it against bending and shear stress.</p>
 									</div>
 								</div>
@@ -212,13 +257,9 @@
 								<div class="inner">
 									<h2 class="major">Video Demo</h2>
 									<div class="video-embed">
-										<!--
-											Swap in the real embed URL once you have a video, e.g.:
-											<iframe src="https://www.youtube.com/embed/VIDEO_ID" title="PLA Cable-Stayed Bridge load test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-										-->
 										<iframe src="{{VIDEO_EMBED_URL}}" title="PLA Cable-Stayed Bridge load test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 									</div>
-									<p class="caption">Load-test footage placeholder - drop in the embed link once the video's up.</p>
+									<p class="caption">Video of Bridge Test</p>
 								</div>
 							</section>
 
@@ -228,22 +269,22 @@
 									<h2 class="major">Gallery</h2>
 									<section class="features">
 										<article>
-											<a href="../images/bridge-cad-girders.jpg" class="image"><img src="../images/bridge-cad-girders.jpg" alt="CAD drawing of the bridge girders" /></a>
+											<a href="../images/project_images/static_structure/bridge-cad-girders.jpg" class="image"><img src="../images/project_images/static_structure/bridge-cad-girders.jpg" alt="CAD drawing of the bridge girders" /></a>
 										</article>
 										<article>
-											<a href="../images/bridge-cad-anchor.jpg" class="image"><img src="../images/bridge-cad-anchor.jpg" alt="CAD drawing of the printed anchor" /></a>
+											<a href="../images/project_images/static_structure/bridge-cad-anchor.jpg" class="image"><img src="../images/project_images/static_structure/bridge-cad-anchor.jpg" alt="CAD drawing of the printed anchor" /></a>
 										</article>
 										<article>
-											<a href="../images/bridge-cad-column.jpg" class="image"><img src="../images/bridge-cad-column.jpg" alt="CAD drawing of the column" /></a>
+											<a href="../images/project_images/static_structure/bridge-cad-column.jpg" class="image"><img src="../images/project_images/static_structure/bridge-cad-column.jpg" alt="CAD drawing of the column" /></a>
 										</article>
 										<article>
-											<a href="../images/bridge-cad-cross-beams.jpg" class="image"><img src="../images/bridge-cad-cross-beams.jpg" alt="CAD drawing of the cross beams" /></a>
+											<a href="../images/project_images/static_structure/bridge-cad-cross-beams.jpg" class="image"><img src="../images/project_images/static_structure/bridge-cad-cross-beams.jpg" alt="CAD drawing of the cross beams" /></a>
 										</article>
 										<article>
-											<a href="../images/bridge-cad-front-view.jpg" class="image"><img src="../images/bridge-cad-front-view.jpg" alt="Rendered front view of the assembled bridge" /></a>
+											<a href="../images/project_images/static_structure/bridge-cad-front-view.jpg" class="image"><img src="../images/project_images/static_structure/bridge-cad-front-view.jpg" alt="Rendered front view of the assembled bridge" /></a>
 										</article>
 										<article>
-											<a href="../images/bridge-assembled-photo.jpg" class="image"><img src="../images/bridge-assembled-photo.jpg" alt="Fully assembled bridge under test setup" /></a>
+											<a href="../images/project_images/static_structure/bridge-assembled-photo.jpg" class="image"><img src="../images/project_images/static_structure/bridge-assembled-photo.jpg" alt="Fully assembled bridge under test setup" /></a>
 										</article>
 									</section>
 									<ul class="actions">

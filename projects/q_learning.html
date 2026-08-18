@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Learning to Navigate: Q-Learning for Path Planning - Sawyer</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<script>
+			MathJax = {
+				tex: { inlineMath: [['\\(', '\\)']] },
+				chtml: { displayAlign: 'center' }
+			};
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+		<style>
+			.figure {
+				max-width: 30em;
+				margin: 0 auto 2.5em auto;
+			}
+			.figure img {
+				width: 100%;
+				display: block;
+				border-radius: 5px;
+			}
+			.figure.wide {
+				max-width: 50em;
+			}
+			.caption {
+				font-family: Raleway, Helvetica, sans-serif;
+				font-size: 0.85em;
+				font-weight: 600;
+				font-style: italic;
+				letter-spacing: 0.03em;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.75);
+				margin: 0.75em 0 0 0;
+			}
+			.figure-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2em;
+				justify-content: center;
+				max-width: 60em;
+				margin: 0 auto 2.5em auto;
+			}
+			.figure-row .figure {
+				flex: 1 1 22em;
+				max-width: 26em;
+				margin-bottom: 0;
+			}
+			.video-embed {
+				position: relative;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding-bottom: 30.9375%;
+				height: 0;
+				overflow: hidden;
+				border-radius: 5px;
+				background: rgba(0, 0, 0, 0.2);
+			}
+			.video-embed iframe,
+			.video-embed video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
+			.project-hero {
+				position: relative;
+				min-height: 85vh;
+				display: flex;
+				align-items: flex-end;
+				overflow: hidden;
+				margin: 0;
+			}
+			.project-hero-media {
+				position: absolute;
+				inset: 0;
+			}
+			.project-hero-media img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center center;
+				display: block;
+			}
+			.project-hero-overlay {
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(to top, rgba(20,21,29,0.98) 0%, rgba(20,21,29,0.9) 30%, rgba(20,21,29,0.55) 65%, rgba(20,21,29,0.65) 100%);
+			}
+			.project-hero-content {
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding: 4em 2em 3em 2em;
+				text-align: center;
+			}
+			.project-hero-content h2 {
+				font-size: 2.75em;
+				border-bottom: 0;
+				padding-bottom: 0;
+				text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+			}
+			.project-hero-content p {
+				font-weight: 600;
+			}
+			.project-hero-content .project-skills {
+				justify-content: center;
+			}
+			.project-hero-content .project-skills span {
+				font-size: 0.95rem;
+				padding: 0.45rem 1rem;
+			}
+			.hero-links {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1em;
+				flex-wrap: wrap;
+				margin: 1.5em 0 0 0;
+			}
+			.hero-github-link,
+			.hero-report-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				margin: 0;
+			}
+			.hero-github-link i,
+			.hero-report-link i {
+				font-size: 1.1em;
+			}
+			.project-hero + .wrapper:before {
+				content: none;
+			}
+			.project-hero + .wrapper {
+				margin-top: 0;
+			}
+			@media screen and (max-width: 980px) {
+				.project-hero-content h2 {
+					font-size: 2em;
+				}
+			}
+			@media screen and (max-width: 736px) {
+				.project-hero {
+					min-height: 60vh;
+				}
+				.project-hero-content h2 {
+					font-size: 1.5em;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Island Navigation -->
+				<nav id="island-nav">
+					<div class="island-trigger">
+						<i class="fas fa-bars"></i>
+						<span>Menu</span>
+					</div>
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../about.html">About Me</a></li>
+						<li><a href="../projects.html" class="active">Projects</a></li>
+						<li><a href="../experience.html">Experience</a></li>
+						<li><a href="../index.html#footer">Contact</a></li>
+					</ul>
+				</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+
+						<!-- Hero -->
+							<section id="hero" class="project-hero">
+								<div class="project-hero-media">
+									<img src="../images/project_images/q_learning_navigation/fig6c_new_optimal_path.png" alt="Q-learning obstacle-avoidance path finding a completely different, safer route than the raw A* path" />
+								</div>
+								<div class="project-hero-overlay"></div>
+								<div class="project-hero-content">
+									<h2>Obstacle Avoidance Using Q-Learning</h2>
+									<p>Reformulating grid-world path planning as a Markov Decision Process and solving it with tabular Q-Learning, so the robot learns paths that are not just optimal like A*, but also keep a safe distance from obstacles.</p>
+									<div class="project-skills">
+										<span>Reinforcement Learning</span>
+										<span>Q-Learning</span>
+										<span>Python</span>
+										<span>Path Planning</span>
+									</div>
+									<p><strong>Status:</strong> Completed &middot; Fall 2025 (ME 469) &nbsp;</p>
+									<div class="hero-links">
+										<!-- Update with the actual repository URL -->
+										<a href="https://github.com/Tomekkrzem/ME469/tree/main/asgn2" class="button icon solid fa-github hero-github-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> View Repository on GitHub</a>
+										<li><a href="project_reports/ME469 ASGN2 Writeup.pdf" class="button icon solid fa-file-pdf" target="_blank" rel="noopener">View Full Report</a></li>
+									</div>
+								</div>
+							</section>
+
+						<!-- Overview -->
+							<section id="overview" class="wrapper alt style2">
+								<div class="inner">
+									<h2 class="major">Overview</h2>
+									<p>This project reframes robot path planning as a reinforcement learning problem. Rather than searching a map directly the way <a href="search_and_navigation.html">A*</a> does, I modeled the grid world as a Markov Decision Process - states are grid positions, actions are the 8 possible moves to neighboring cells, and transitions are deterministic - and trained a tabular Q-Learning agent to learn a policy that reaches the goal while keeping its distance from obstacles. Q-Learning is a good fit here specifically because the state space is discretizable and small enough to tabulate (84 states at 1 m resolution, 8,591 states at 0.1 m), the world is static and fully Markovian, and every action is deterministic - which, per Kaelbling (1996), is exactly the condition under which Q-Learning is guaranteed to converge to the optimal policy given enough exploration.</p>
+									<div class="figure">
+										<img src="../images/project_images/q_learning_navigation/fig2_training_loop.png" alt="Reinforcement learning agent-environment training loop diagram" />
+										<p class="caption">The agent-environment training loop: the agent selects an action from its current state, the environment returns the next state and a reward, and the Q-Table is updated accordingly.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Challenge -->
+							<section id="challenge" class="wrapper style3">
+								<div class="inner">
+									<h2 class="major">Challenge</h2>
+									<p>A* is optimal and complete, but "optimal" only means shortest - it says nothing about how survivable a path actually is. The shortest path frequently hugs the perimeter of an obstacle, and once that path is handed to a robot with any real motion noise, hugging the wall is exactly what causes a collision. A* also has no memory: every time the map changes or a new query comes in, it has to re-search from scratch, with no accumulated sense of "this area near obstacles is generally risky." Smoothing and preprocessing the raw path helps, but as the plots below show, it isn't enough to fully solve the underlying issue.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/q_learning_navigation/fig1_astar_vs_trajectory.png" alt="A* path hugging an obstacle corner on the left, and the resulting smoothed robot trajectory still clipping the obstacle on the right" />
+										<p class="caption">Left: the shortest A* path hugs the corner of an obstacle. Right: even after smoothing, the commanded robot trajectory still clips it - a direct consequence of optimizing purely for path length.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Approach -->
+							<section id="approach" class="wrapper alt style4">
+								<div class="inner">
+									<h2 class="major">Approach</h2>
+									<p>The reward function is what actually teaches the agent to avoid hugging obstacles. It combines a large terminal reward at the goal, a large penalty for colliding with an obstacle, and two shaping terms - an attractive pull toward the goal and a repulsive push away from any obstacle within one grid cell:</p>
+									<p style="text-align:center">
+										\(Reward(r_t) = \begin{cases} 10, & d_{goal}=0 \\ -10, & d_{obs}=0 \\ -\beta d_{goal}, & \forall x_t \\ -\delta d_{obs}, & d_{obs}<1 \end{cases}\)
+									</p>
+									<p>where \(d_{goal}\) and \(d_{obs}\) are the Euclidean distances to the goal and to the nearest obstacle. The \(-\beta d_{goal}\) term is applied everywhere and creates a smooth gradient pulling the agent toward the goal over time - functionally the same role the heuristic distance plays in A*. The \(-\delta d_{obs}\) term only activates within one tile of an obstacle, and is what specifically teaches the agent to keep its distance rather than skim the boundary.</p>
+									<div class="figure">
+										<img src="../images/project_images/q_learning_navigation/fig3_simple_test_coarse.png" alt="Optimal path and obstacle-avoidance path from Q-Learning on a coarse test grid" />
+										<p class="caption">First validation on a simple coarse grid: the optimal-path policy (left) and the obstacle-avoidance policy (right) both reach the goal, with the right policy visibly steering clear of the obstacle.</p>
+									</div>
+									<p>Training uses an \(\epsilon\)-greedy policy, \(a_t = random(a_t)\) with probability \(\epsilon\) and \(a_t = \operatorname*{argmax}_{a_t} Q^\pi(s,a)\) otherwise, so the agent explores early and increasingly exploits its learned values; testing switches to a pure greedy policy. Every step updates the Q-Table with the standard temporal-difference rule, \(Q(s,a) = Q(s,a) + \alpha[r_t + \gamma \max_{a'} Q(s',a') - Q(s,a)]\), with a learning rate \(\alpha=0.8\), discount \(\gamma=0.95\), exploration rate \(\epsilon=0.3\), \(\beta=0.1\), \(\delta=0.5\), and 3,000-10,000 training episodes depending on how far the start is from the goal. With the obstacle term removed, this reduces exactly to the Bellman optimality equation \(Q^*(s,a) = r_t + \gamma\max_a Q^*(s',a')\) with \(r_t=-\beta d_{goal}\) - the same distance-based gradient A* follows via its heuristic, which is why the two algorithms agree whenever obstacle avoidance is turned off.</p>
+								</div>
+							</section>
+
+						<!-- Result -->
+							<section id="result" class="wrapper style5">
+								<div class="inner">
+									<h2 class="major">Result</h2>
+									<p>Scaled up to the 8,591-state high-resolution grid, the agent reliably reproduced optimal, A*-length paths when the obstacle-avoidance term was left out, and produced genuinely different, safer paths once it was turned on - most strikingly in the case below, where obstacle avoidance led the agent to abandon the direct route entirely in favor of a longer but obstacle-clear detour.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/q_learning_navigation/fig7_astar_vs_ql.png" alt="A* path compared to Q-Learning's optimal path and obstacle-avoidance path for the same start and goal" />
+										<p class="caption">Same start/goal, three policies: A* (left) and Q-Learning's optimal policy (middle) produce an identical path, while Q-Learning's obstacle-avoidance policy (right) finds a distinct, wider-clearance route.</p>
+									</div>
+									<p>The real payoff shows up under closed-loop control. Feeding the plain A* path to the PID controller from the <a href="search_and_navigation.html">navigation controller project</a> reproduced the same obstacle-hugging collisions seen earlier, while the obstacle-avoidance path let the robot track the same controller cleanly with zero collisions.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/q_learning_navigation/fig8_astar_pid_vs_oa_pid.png" alt="Robot path under PID control following the A* path (left, colliding) versus the obstacle-avoidance Q-Learning path (right, collision-free)" />
+										<p class="caption">Under the same noisy PID controller (\(\alpha=0.5\)): the A* path (left) collides with both obstacles; the Q-Learning obstacle-avoidance path (right) clears them completely.</p>
+									</div>
+									<p>Visualizing the learned Q-Table as a heatmap makes the reward shaping visible directly in the value function: value increases smoothly toward the goal and drops sharply around every obstacle, exactly the attractive/repulsive structure the reward function was designed to produce. Better-trained runs (10,000 episodes, right) show a much more fully populated value surface than shorter runs (3,000 episodes, left and middle).</p>
+									<div class="figure wide">
+										<img src="../images/project_images/q_learning_navigation/fig9_qtable_heatmaps.png" alt="Heatmap visualizations of three learned Q-Tables, showing attractive gradients toward goals and repulsive regions around obstacles" />
+										<p class="caption">Q-Table heatmaps for three training runs. Bright regions (high value) surround the goal; dark regions (low value) surround obstacles. The rightmost, longest-trained run shows the most fully explored value surface.</p>
+									</div>
+									<p>Learning dynamics told a consistent story: convergence and collision counts both dropped off quickly - within roughly 300 episodes for a short path and 1,000 for a longer one - but larger state spaces took noticeably longer to settle, simply because there were more state-action pairs left to visit and update.</p>
+									<div class="figure-row">
+										<div class="figure">
+											<img src="../images/project_images/q_learning_navigation/fig11_convergence_histories.png" alt="Convergence history over training episodes for a short path (left) and a long path (right)" />
+											<p class="caption">Convergence (change in Q-Value per episode) settles faster for the shorter path (left) than the longer one (right).</p>
+										</div>
+										<div class="figure">
+											<img src="../images/project_images/q_learning_navigation/fig12_collision_histories.png" alt="Collision count over training episodes for a short path (left) and a long path (right)" />
+											<p class="caption">Collisions per episode fall off within a few hundred episodes for both paths, faster for the shorter one.</p>
+										</div>
+									</div>
+								</div>
+							</section>
+
+						<!-- Code -->
+							<section id="code" class="wrapper alt style1">
+								<div class="inner">
+									<h2 class="major">Code &amp; Full Report</h2>
+									<p>The full write-up covers the complete MDP formulation, the justification for choosing Q-Learning, the reward function design, hyperparameter tuning notes, and every comparison against A* and the PID controller from the earlier navigation project - along with a discussion of failure modes like sparse Q-Tables under low exploration.</p>
+									<ul class="actions">
+										<li><a href="project_reports/ME469 ASGN2 Writeup.pdf" class="button icon solid fa-file-pdf" target="_blank" rel="noopener">View Full Report</a></li>
+										<li><a href="../projects.html" class="button">Back to Projects</a></li>
+									</ul>
+								</div>
+							</section>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>

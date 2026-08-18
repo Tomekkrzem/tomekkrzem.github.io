@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Search &amp; Navigation: Path Planning and Trajectory Control - Sawyer</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<script>
+			MathJax = {
+				tex: { inlineMath: [['\\(', '\\)']] },
+				chtml: { displayAlign: 'center' }
+			};
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+		<style>
+			.figure {
+				max-width: 30em;
+				margin: 0 auto 2.5em auto;
+			}
+			.figure img {
+				width: 100%;
+				display: block;
+				border-radius: 5px;
+			}
+			.figure.wide {
+				max-width: 50em;
+			}
+			.caption {
+				font-family: Raleway, Helvetica, sans-serif;
+				font-size: 0.85em;
+				font-weight: 600;
+				font-style: italic;
+				letter-spacing: 0.03em;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.75);
+				margin: 0.75em 0 0 0;
+			}
+			.figure-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2em;
+				justify-content: center;
+				max-width: 60em;
+				margin: 0 auto 2.5em auto;
+			}
+			.figure-row .figure {
+				flex: 1 1 22em;
+				max-width: 26em;
+				margin-bottom: 0;
+			}
+			.video-embed {
+				position: relative;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding-bottom: 30.9375%;
+				height: 0;
+				overflow: hidden;
+				border-radius: 5px;
+				background: rgba(0, 0, 0, 0.2);
+			}
+			.video-embed iframe,
+			.video-embed video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
+			.project-hero {
+				position: relative;
+				min-height: 85vh;
+				display: flex;
+				align-items: flex-end;
+				overflow: hidden;
+				margin: 0;
+			}
+			.project-hero-media {
+				position: absolute;
+				inset: 0;
+			}
+			.project-hero-media img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center center;
+				display: block;
+			}
+			.project-hero-overlay {
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(to top, rgba(20,21,29,0.98) 0%, rgba(20,21,29,0.9) 30%, rgba(20,21,29,0.55) 65%, rgba(20,21,29,0.65) 100%);
+			}
+			.project-hero-content {
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding: 4em 2em 3em 2em;
+				text-align: center;
+			}
+			.project-hero-content h2 {
+				font-size: 2.75em;
+				border-bottom: 0;
+				padding-bottom: 0;
+				text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+			}
+			.project-hero-content p {
+				font-weight: 600;
+			}
+			.project-hero-content .project-skills {
+				justify-content: center;
+			}
+			.project-hero-content .project-skills span {
+				font-size: 0.95rem;
+				padding: 0.45rem 1rem;
+			}
+			.hero-links {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1em;
+				flex-wrap: wrap;
+				margin: 1.5em 0 0 0;
+			}
+			.hero-github-link,
+			.hero-report-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				margin: 0;
+			}
+			.hero-github-link i,
+			.hero-report-link i {
+				font-size: 1.1em;
+			}
+			.project-hero + .wrapper:before {
+				content: none;
+			}
+			.project-hero + .wrapper {
+				margin-top: 0;
+			}
+			@media screen and (max-width: 980px) {
+				.project-hero-content h2 {
+					font-size: 2em;
+				}
+			}
+			@media screen and (max-width: 736px) {
+				.project-hero {
+					min-height: 60vh;
+				}
+				.project-hero-content h2 {
+					font-size: 1.5em;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Island Navigation -->
+				<nav id="island-nav">
+					<div class="island-trigger">
+						<i class="fas fa-bars"></i>
+						<span>Menu</span>
+					</div>
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../about.html">About Me</a></li>
+						<li><a href="../projects.html" class="active">Projects</a></li>
+						<li><a href="../experience.html">Experience</a></li>
+						<li><a href="../index.html#footer">Contact</a></li>
+					</ul>
+				</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+
+						<!-- Hero -->
+							<section id="hero" class="project-hero">
+								<div class="project-hero-media">
+									<img src="../images/project_images/search_and_navigation/fig12_online_controller.png" alt="Robot performing search and navigation simultaneously, path shown weaving between obstacles toward the goal" />
+								</div>
+								<div class="project-hero-overlay"></div>
+								<div class="project-hero-content">
+									<h2>Online A* and Potential Fields (From Scratch)</h2>
+									<p>Building a full autonomous navigation stack from scratch - grid-based world representation, A* and potential-field path planning, an online LRTA* replanner, Bezier trajectory smoothing, and a tuned PID controller - then fusing planning and control into one robot that searches and navigates at the same time.</p>
+									<div class="project-skills">
+										<span>Path Planning</span>
+										<span>A* Search</span>
+										<span>Potential Fields</span>
+										<span>PID Control</span>
+									</div>
+									<p><strong>Status:</strong> Completed &middot; Fall 2025 (ME 469) &nbsp;</p>
+									<div class="hero-links">
+										<!-- Update with the actual repository URL -->
+										<a href="https://github.com/Tomekkrzem/ME469/tree/main/asgn1" class="button icon solid fa-github hero-github-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> View Repository on GitHub</a>
+										<li><a href="project_reports/ME469 ASGN1 Writeup.pdf" class="button icon solid fa-file-pdf" target="_blank" rel="noopener">View Full Report</a></li>
+									</div>
+								</div>
+							</section>
+
+						<!-- Overview -->
+							<section id="overview" class="wrapper alt style2">
+								<div class="inner">
+									<h2 class="major">Overview</h2>
+									<p>This project builds the planning and control layers that sit on top of a robot's state estimate: given a map and a goal, how does the robot decide where to go, and how does it actually get there? Part A compares three path-planning strategies on a discretized grid world - A* search, an artificial potential field, and an online, partially-observable variant of A* - to see how each handles complete vs. incomplete map knowledge. Part B turns those plans into motion: raw A* paths are smoothed with Bezier curves, checked for collisions, and handed to a tuned PID controller, first offline against a precomputed path and then fully online, with the robot planning, learning, and driving all in the same control loop.</p>
+									<div class="figure">
+										<img src="../images/project_images/search_and_navigation/fig1_low_res_grid.png" alt="1x1m resolution occupancy grid with obstacles populated from a landmark dataset" />
+										<p class="caption">The 1x1 m occupancy grid used for Part A, populated with obstacles from a landmark dataset. 8-neighbor connectivity means the planner can only observe and move to the cells immediately around it.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Challenge -->
+							<section id="challenge" class="wrapper style3">
+								<div class="inner">
+									<h2 class="major">Challenge</h2>
+									<p>Classic A* is complete and optimal, but only because it assumes the robot already knows where every obstacle is - an unrealistic assumption for real navigation. Potential fields relax that assumption's computational cost but introduce their own failure mode: because the robot is just following a gradient, it can walk straight into a local minimum and get stuck with no way to tell it isn't at the goal. Reconciling "the robot doesn't actually know the map" with "the robot still needs to find a good path" - without falling into either trap - was the central problem Part A had to solve.</p>
+									<div class="figure">
+										<img src="../images/project_images/search_and_navigation/fig4_potential_field_paths.png" alt="Three potential field paths; the middle one shows the robot trapped in a local minimum" />
+										<p class="caption">Potential field paths for three start/goal pairs (C = 0.5). The middle path shows the robot trapped in a local minimum, unable to escape the gradient it's following.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Approach -->
+							<section id="approach" class="wrapper alt style4">
+								<div class="inner">
+									<h2 class="major">Approach</h2>
+									<p><strong>Offline planning.</strong> A* scores each candidate cell with the evaluation function \(f(n) = g(n) + h(n)\), where \(g(n)\) is the true cost of the path so far - 1 for an empty cell, 1000 for an occupied one, so the search is technically free to cross an obstacle but is heavily discouraged from it - and \(h(n)\) is an admissible heuristic estimating the remaining cost to the goal. I used Euclidean distance, \(h(n) = \sqrt{(x_{Goal}-x_n)^2 + (y_{Goal}-y_n)^2}\), which never overestimates the true grid distance and therefore keeps the search both complete and optimal. As a sanity check, a 7-cell true-cost path from \((0,0)\) to \((4,4)\) has a Euclidean heuristic of \(\sqrt{32} \approx 5.66\), safely under the true cost of 7. Potential fields took a different approach entirely: an attractive field pulling toward the goal, \(U(X)_A = C\sqrt{(x_{Goal}-x)^2+(y_{Goal}-y)^2}\), and a repulsive field pushing away from every obstacle, \(U(X)_R = \sum_{i=0}^{N} \frac{1}{\sqrt{(x_{Obs,i}-x)^2+(y_{Obs,i}-y)^2}}\), summed into a single field \(U(X)_{Total} = U(X)_A + U(X)_R\) that the robot descends.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/search_and_navigation/fig2_astar_diagram.png" alt="A* algorithm diagram showing true cost and Euclidean heuristic on a grid" />
+										<p class="caption">True cost (red) accumulated from the start, and the Euclidean heuristic (green) estimating the remaining distance to the goal - the two terms A* balances at every node.</p>
+									</div>
+									<p><strong>Online planning.</strong> Both of the above assume the robot has the whole map up front. To relax that, I implemented Learning Real-Time A* (LRTA*), which limits the planner to the 8 immediate neighbor cells at each step, updating a Results table (which action, from which state, led to which resulting state) and a Cost table (each state's best known cost, falling back to the heuristic for states it hasn't reached yet) as it goes. This makes the planner complete but no longer optimal - it can commit to a cell it believes is open, only to discover an obstacle once it actually gets there, exactly the "sandwiched node" behavior visible in the middle path below.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/search_and_navigation/fig5_online_astar_paths.png" alt="Three online A* paths on the low-resolution grid; middle path shows a detour after discovering a hidden obstacle" />
+										<p class="caption">Online (LRTA*) paths on the low-res grid. The middle path first commits to a cell between two obstacles, discovers it's blocked once visited, and re-plans around it - complete, but not optimal.</p>
+									</div>
+									<p><strong>From plans to motion.</strong> Part B turns a planned path into a drivable trajectory. Raw A* waypoints are fit with an \(n\)th-order Bezier curve, \(B(t) = \sum_i \sum_j P_i \binom{n}{j}(t_i)^j(1-t_i)^{n-j}\), to get a smooth path; collision avoidance then nudges any trajectory point that sits too close to an obstacle center by a fixed offset in the direction away from it, and a second Bezier pass smooths out the resulting kink. A PID controller then drives the robot along that trajectory using a linear error \(e_v = \sqrt{(x_d-x_t)^2+(y_d-y_t)^2}\) and an angular error \(e_w = \theta_d - \theta_t\), where the desired heading is \(\theta_d = \tan^{-1}\!\big(\frac{y_d-y_t}{x_d-x_t}\big)\), producing commanded velocities \(v = K_{pv}e_v + K_{iv}\int e_v + K_{dv}\dot{e}_v\) and \(w = K_{pw}e_w + K_{iw}\int e_w + K_{dw}\dot{e}_w\), with acceleration limits enforced to match a real mobile robot's dynamics.</p>
+									<div class="figure-row">
+										<div class="figure">
+											<img src="../images/project_images/search_and_navigation/fig9_collision_avoidance_diagram.png" alt="Collision avoidance diagram showing a trajectory point offset away from an obstacle center" />
+											<p class="caption">Collision avoidance: the trajectory point is shifted away from the obstacle center along its closer axis by a fixed offset.</p>
+										</div>
+										<div class="figure">
+											<img src="../images/project_images/search_and_navigation/fig10_trajectory_error_diagram.png" alt="Diagram of the linear and angular error terms used by the PID controller" />
+											<p class="caption">The linear (\(e_v\)) and angular (\(e_w\)) error terms the PID controller drives to zero at each trajectory point.</p>
+										</div>
+									</div>
+								</div>
+							</section>
+
+						<!-- Result -->
+							<section id="result" class="wrapper style5">
+								<div class="inner">
+									<h2 class="major">Result</h2>
+									<p>Run against precomputed, Bezier-smoothed A* paths, the offline PID controller tracked its input trajectory almost immediately and reached every goal, with only minor edge-clipping where the preprocessing produced a sharper turn than the robot's acceleration limits could really follow. Folding search and control into a single online loop - LRTA* proposing the next cell, the PID controller driving to it, collision avoidance sliding the robot along an obstacle face instead of into it - worked just as well, including in a case where the robot had to explore an obstacle's face, realize its first path was blocked, and turn around to find the real way through.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/search_and_navigation/fig12_online_controller.png" alt="Robot performing search and navigation simultaneously across three start/goal pairs" />
+										<p class="caption">The full online stack - LRTA* planning, Bezier-free direct control, and collision avoidance - running search and navigation together. The middle case shows the robot exploring an obstacle face, turning around, and finding the better path.</p>
+									</div>
+									<p>Grid resolution turned out to be a real trade-off, not just a detail: the coarser 1 m grid let the robot move with much larger, more confident steps since it only had to check one cell to know if a direction was blocked, but that same coarseness caused it to miss detail and take less direct paths. The finer 0.1 m grid (with obstacles inflated to 0.7x0.7 m to account for robot size) produced tighter, more optimal-looking paths, at the cost of having to check far more cells - and more exploration - along the way.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/search_and_navigation/fig13_res_comparison.png" alt="Comparison of online search-and-navigation performance on the high-resolution grid (top) versus the low-resolution grid (bottom)" />
+										<p class="caption">Same start/goal pairs, two resolutions: the 0.1 m grid (top) takes tighter, more deliberate paths around obstacles; the 1 m grid (bottom) moves in fewer, larger steps but misses finer routing options.</p>
+									</div>
+									<p>A few simplifying assumptions are worth naming. The robot is treated as if it knows its exact state after every move, when in reality it would only have a noisy estimate - exactly the gap a filter (see the <a href="probabilistic_filtering.html">particle filter project</a>) is meant to close. Collisions here simply clip the robot's motion rather than changing its physical state, and the commanded velocities are assumed to execute perfectly, ignoring motor inefficiency and battery effects a real platform would have to contend with.</p>
+								</div>
+							</section>
+
+						<!-- Code -->
+							<section id="code" class="wrapper alt style1">
+								<div class="inner">
+									<h2 class="major">Code &amp; Full Report</h2>
+									<p>The full write-up covers every step in detail - grid construction, the A* and potential field derivations, the LRTA* implementation, Bezier trajectory smoothing, collision avoidance, and both the offline and online PID controllers - along with the complete set of result plots at both grid resolutions.</p>
+									<ul class="actions">
+										<li><a href="project_reports/ME469 ASGN1 Writeup.pdf" class="button icon solid fa-file-pdf" target="_blank" rel="noopener">View Full Report</a></li>
+										<li><a href="../projects.html" class="button">Back to Projects</a></li>
+									</ul>
+								</div>
+							</section>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>

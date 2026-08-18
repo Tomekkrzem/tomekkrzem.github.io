@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>KNN-Based Heading Correction for a Hexapod Robot - Sawyer</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			.figure {
+				max-width: 30em;
+				margin: 0 auto 2.5em auto;
+			}
+			.figure img {
+				width: 100%;
+				display: block;
+				border-radius: 5px;
+			}
+			.figure.wide {
+				max-width: 50em;
+			}
+			.caption {
+				font-family: Raleway, Helvetica, sans-serif;
+				font-size: 0.85em;
+				font-weight: 600;
+				font-style: italic;
+				letter-spacing: 0.03em;
+				text-align: center;
+				color: rgba(255, 255, 255, 0.75);
+				margin: 0.75em 0 0 0;
+			}
+			.figure-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2em;
+				justify-content: center;
+				max-width: 60em;
+				margin: 0 auto 2.5em auto;
+			}
+			.figure-row .figure {
+				flex: 1 1 22em;
+				max-width: 26em;
+				margin-bottom: 0;
+			}
+			.video-embed {
+				position: relative;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding-bottom: 30.9375%;
+				height: 0;
+				overflow: hidden;
+				border-radius: 5px;
+				background: rgba(0, 0, 0, 0.2);
+			}
+			.video-embed iframe,
+			.video-embed video {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
+			.project-hero {
+				position: relative;
+				min-height: 85vh;
+				display: flex;
+				align-items: flex-end;
+				overflow: hidden;
+				margin: 0;
+			}
+			.project-hero-media {
+				position: absolute;
+				inset: 0;
+			}
+			.project-hero-media img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center center;
+				display: block;
+			}
+			.project-hero-overlay {
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(to top, rgba(20,21,29,0.98) 0%, rgba(20,21,29,0.9) 30%, rgba(20,21,29,0.55) 65%, rgba(20,21,29,0.65) 100%);
+			}
+			.project-hero-content {
+				position: relative;
+				z-index: 1;
+				width: 100%;
+				max-width: 55em;
+				margin: 0 auto;
+				padding: 4em 2em 3em 2em;
+				text-align: center;
+			}
+			.project-hero-content h2 {
+				font-size: 2.75em;
+				border-bottom: 0;
+				padding-bottom: 0;
+				text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+			}
+			.project-hero-content p {
+				font-weight: 600;
+			}
+			.project-hero-content .project-skills {
+				justify-content: center;
+			}
+			.project-hero-content .project-skills span {
+				font-size: 0.95rem;
+				padding: 0.45rem 1rem;
+			}
+			.hero-links {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 1em;
+				flex-wrap: wrap;
+				margin: 1.5em 0 0 0;
+			}
+			.hero-github-link,
+			.hero-report-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5em;
+				margin: 0;
+			}
+			.hero-github-link i,
+			.hero-report-link i {
+				font-size: 1.1em;
+			}
+			.project-hero + .wrapper:before {
+				content: none;
+			}
+			.project-hero + .wrapper {
+				margin-top: 0;
+			}
+			@media screen and (max-width: 980px) {
+				.project-hero-content h2 {
+					font-size: 2em;
+				}
+			}
+			@media screen and (max-width: 736px) {
+				.project-hero {
+					min-height: 60vh;
+				}
+				.project-hero-content h2 {
+					font-size: 1.5em;
+				}
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Island Navigation -->
+				<nav id="island-nav">
+					<div class="island-trigger">
+						<i class="fas fa-bars"></i>
+						<span>Menu</span>
+					</div>
+					<ul>
+						<li><a href="../index.html">Home</a></li>
+						<li><a href="../about.html">About Me</a></li>
+						<li><a href="../projects.html" class="active">Projects</a></li>
+						<li><a href="../experience.html">Experience</a></li>
+						<li><a href="../index.html#footer">Contact</a></li>
+					</ul>
+				</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+
+						<!-- Hero -->
+							<section id="hero" class="project-hero">
+								<div class="project-hero-media">
+									<img src="../images/project_images/hexapod_knn_heading/hexapod.jpg" alt="Hexapod robot" />
+								</div>
+								<div class="project-hero-overlay"></div>
+								<div class="project-hero-content">
+									<h2>KNN-Based Heading Correction for a Hexapod Robot</h2>
+									<p>Teaching a hexapod to detect and correct its own heading drift using only ultrasonic wall scans and a k-Nearest Neighbors regression model - no extra sensors, just pattern-matching against a hand-collected training set.</p>
+									<div class="project-skills">
+										<span>Supervised Learning (KNN)</span>
+										<span>Sensor Data Collection</span>
+										<span>Embedded Robotics</span>
+										<span>Python</span>
+									</div>
+									<p><strong>Status:</strong> Completed &middot; Winter 2025 (ME 301) &nbsp;</p>
+									<div class="hero-links">
+										<li><a href="project_reports/ME 301_ Introductory Robotics Laboratory Assignment 3.pdf" class="button icon solid fa-file-pdf" target="_blank" rel="noopener">View Full Report</a></li>
+									</div>
+								</div>
+							</section>
+
+						<!-- Overview -->
+							<section id="overview" class="wrapper alt style2">
+								<div class="inner">
+									<h2 class="major">Overview</h2>
+									<p>Working with Jack Press for ME 301, we ran into a persistent problem left over from earlier labs: our hexapod's linear walk never went quite straight. Even with an inverse-kinematics gait, the robot picked up a heading offset - and to a lesser extent a lateral drift - on almost every walk, most likely from foot skidding and small actuation inconsistencies that are nearly impossible to fully characterize. Since heading offset dominated the error, we scoped this project down to one learned behavior: have the robot scan the walls of a confined space, like a maze corridor, and use a k-Nearest Neighbors regression model to predict and correct its own chassis offset from those scans.</p>
+									<div class="figure">
+										<img src="../images/project_images/hexapod_knn_heading/fig2_linear_offset_configs.png" alt="Five different linear offset configurations of the hexapod within a maze tile, used to build the training dataset" />
+										<p class="caption">The five linear-offset configurations used at every angular offset when building the training set - from hugging the left wall (1) to hugging the right wall (5).</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Challenge -->
+							<section id="challenge" class="wrapper style3">
+								<div class="inner">
+									<h2 class="major">Challenge</h2>
+									<p>The robot has no absolute heading sensor of its own, so the only information available to correct itself is geometric: how far away are the walls, at a set of known scan angles, given the robot's actual position and orientation inside the tile. That signal is confounded by two things at once - the chassis's rotational offset, which is what we actually want to measure, and its linear offset within the tile, which changes the raw distances without saying anything about heading. Any model we used would have to learn to see through the linear-offset noise and isolate the angular signal, from a feature vector built out of a single ultrasonic sensor taking sequential scans rather than a full instantaneous LIDAR sweep.</p>
+									<div class="figure">
+										<img src="../images/project_images/hexapod_knn_heading/fig1_chassis_offset_diagram.png" alt="No chassis offset scan pattern compared to a -20 degree chassis offset scan pattern" />
+										<p class="caption">No offset (left) vs. a -20&deg; chassis offset (right): the 13-ray ultrasonic scan pattern shifts distinctly with heading, which is the signal the model has to learn to read - even with linear offset also changing the picture.</p>
+									</div>
+								</div>
+							</section>
+
+						<!-- Approach -->
+							<section id="approach" class="wrapper alt style4">
+								<div class="inner">
+									<h2 class="major">Approach</h2>
+									<p>We chose k-Nearest Neighbors specifically because it's simple, interpretable, and well suited to a small, dense dataset: for regression, KNN predicts a continuous label by averaging the labels of the \(k\) closest training points to a new input, which is exactly what's needed to interpolate a chassis offset for configurations that weren't explicitly in the training set. Each training example is a 14-value vector - the chassis offset label, followed by 13 ultrasonic range readings taken every 5&deg; between 0&deg; and 60&deg;. The training set covers 9 angular offsets (-30&deg; to 30&deg;) across 5 linear-offset positions, in two spatial configurations (one wall only, and one wall plus a front wall), for 90 total data points.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/hexapod_knn_heading/fig3_training_data_excerpt.png" alt="Excerpt of five raw training data rows for a 30-degree chassis offset, showing 13 ultrasonic scan readings per row" />
+										<p class="caption">Five raw training rows, all logged at a 30&deg; chassis offset - the five rows correspond to the five linear-offset configurations shown above. Each row's 13 values are the ultrasonic readings that make up that example's feature vector.</p>
+									</div>
+									<p>We tuned the model along four axes: the value of \(k\) itself; the size of the input feature vector, by dropping scan values at user-defined modulus positions to see how much resolution the model actually needed; the resolution of the training set (denser vs. sparser angular sampling); and the distance metric used to rank neighbors (Euclidean vs. cosine). Ground truth for every training and test example was measured with a compass, which turned out to be its own source of noise - more on that below.</p>
+								</div>
+							</section>
+
+						<!-- Result -->
+							<section id="result" class="wrapper style5">
+								<div class="inner">
+									<h2 class="major">Result</h2>
+									<p>Tested on 19 held-out chassis offsets with a randomized linear offset (mimicking the uncertainty the robot would actually have mid-walk), the model predicted the correction angle with an average error of 3.15&deg; (&sigma; = 1.94&deg;), and the robot's actual physical turn tracked that prediction closely - the final chassis error after correcting essentially matched the prediction error one-for-one. Every prediction got the sign of the correction right, even when the magnitude was off, and interestingly, adding finer angular resolution between 10&deg; and 20&deg; in the training set didn't noticeably improve accuracy in that range.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/hexapod_knn_heading/fig4_heading_correction_charts.png" alt="Bar charts comparing starting, predicted, and corrected angles, and the resulting error, across 19 static heading-correction trials" />
+										<p class="caption">Static correction test (19 trials, held-out offsets): predicted correction closely tracks the physical turn (left), and final chassis error tracks prediction error almost exactly (right).</p>
+									</div>
+									<p>The more meaningful test was correcting heading drift after an actual walk, which is what the behavior is for. There, the model performed even better - 0.88&deg; average prediction error and 0.71&deg; average final chassis error - correcting the roughly 2&deg; of drift a normal walk accumulated, and even recovering starting offsets as large as 15&deg; down to within about 3&deg;.</p>
+									<div class="figure wide">
+										<img src="../images/project_images/hexapod_knn_heading/fig5_walk_heading_correction_charts.png" alt="Bar charts comparing starting, predicted, and corrected angles, and the resulting error, across 17 walk heading-correction trials" />
+										<p class="caption">Walk heading-correction test (17 trials, including missing-wall segments): tighter errors overall than the static test, since the drift being corrected was smaller to begin with.</p>
+									</div>
+									<p>The biggest confound was the compass itself: readings visibly drifted while the ultrasonic sensor was scanning, almost certainly from electromagnetic interference, which makes some of the "ground truth" labels suspect - and means the model may genuinely be more accurate than the numbers above suggest. Looking ahead, a natural next step would be an adaptive-resolution training set - coarser sampling for large angle corrections, finer sampling near zero - paired with a two-stage correction (a rough turn followed by a precise one), which could improve small-angle accuracy without growing the dataset.</p>
+								</div>
+							</section>
+
+	
+							<section id="video-demo" class="wrapper alt style2">
+								<div class="inner">
+									<h2 class="major">Video Demo</h2>
+									<div class="video-gallery">
+										<div>
+											<div class="video-embed">
+												<!-- e.g.: <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Static heading correction test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+												<iframe src="{{VIDEO_EMBED_URL_1}}" title="Static heading correction test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+											</div>
+											<p class="caption">Static heading correction: the hexapod scans the walls and turns to correct a commanded chassis offset.</p>
+										</div>
+										<div>
+											<div class="video-embed">
+												<iframe src="{{VIDEO_EMBED_URL_2}}" title="Walk heading correction test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+											</div>
+											<p class="caption">Walk heading correction: the hexapod walks a maze segment, including a section with a missing wall, then corrects its accumulated drift.</p>
+										</div>
+									</div>
+								</div>
+							</section>
+
+
+						<!-- Code -->
+							<section id="code" class="wrapper alt style1">
+								<div class="inner">
+									<h2 class="major">Full Report</h2>
+									<p>The full write-up includes the literature review on ML in robotics, the complete data-collection procedure for both spatial configurations, the four tuning strategies explored for the KNN model, and the full trial-by-trial tables behind both result charts above.</p>
+									<ul class="actions">
+										<li><a href="project_reports/ME 301_ Introductory Robotics Laboratory Assignment 3.pdf" class="button icon solid fa-file-pdf" target="_blank" rel="noopener">View Full Report</a></li>
+										<li><a href="../projects.html" class="button">Back to Projects</a></li>
+									</ul>
+								</div>
+							</section>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>
