@@ -30,7 +30,8 @@
 
 				<!-- Banner -->
 					<section id="banner">
-						<div class="inner">
+
+						<div class="banner-header">
 							<div class="profile-block">
 								<a class="image"><img src="images/Tomasz_Profile.png" alt="" /></a>
 								<ul class="icons profile-icons">
@@ -39,52 +40,27 @@
 									<li><a href="projects/Tomasz_Krzeminski_Mechanical_Engineer_Resume.pdf" class="icon solid fa-file-alt"><span class="label">Resume</span></a></li>
 								</ul>
 							</div>
-							<h2><span class="name">Tomasz Krzeminski </span> <span class="title"> | M.S. Mechanical Engineering</span></h2>
-							<p>Mechanical engineer and builder with a passion for mechanical design, interested in robotic hardware for dexterous manipulation. Click <a href="about.html">Here</a> to learn more about me.</p>
+							<div class="banner-header-text">
+								<h2><span class="name">Tomasz Krzeminski </span> <span class="title"> | M.S. Mechanical Engineering</span></h2>
+								<p>Mechanical engineer and builder with a passion for mechanical design, interested in robotic hardware for dexterous manipulation. Click <a href="about.html">Here</a> to learn more about me.</p>
+							</div>
 						</div>
+
+						<div class="banner-showcase">
+							<!-- Replace the src below with the path to your project showcase GIF -->
+							<img src="images/project_showcase.gif" alt="Project work showcase" class="banner-gif" />
+							<ul class="actions">
+								<li><a href="#four" class="button">View My Projects</a></li>
+							</ul>
+						</div>
+
 					</section>
 
 				<!-- Wrapper -->
 					<section id="wrapper">
 
-						<!-- One -->
-							<section id="one" class="wrapper spotlight style1">
-								<div class="inner">
-									<a class="image"><img src="images/Tomasz_Grad.jpg" alt="Tomasz Graduation Photo" /></a>
-									<div class="content">
-										<h2 class="major">Education Background</h2>
-										<p>I recently graduated from Northwestern with a combined BS/MS in Mechanical Engineering, focusing on robotics and dynamical systems. From building powertrain components for a Baja SAE off-road vehicle to designing, machining, and assembling a robotic finger from scratch for my capstone, I've built my engineering foundation by getting my hands dirty on real, physical systems.</p>
-										<a href="about.html" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
-
-						<!-- Two -->
-							<section id="two" class="wrapper alt spotlight style2">
-								<div class="inner">
-									<a class="image"><img src="images/Tomasz_Machining.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">My Hobbies and Interests</h2>
-										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-										<a href="about.html" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
-
-						<!-- Three -->
-							<section id="three" class="wrapper spotlight style3">
-								<div class="inner">
-									<a class="image"><img src="images/Tomasz_Job.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">My Work Experience</h2>
-										<p>I’m a mechanical engineer who enjoys working on problems that combine robotics, mechanical design, controls, and manufacturing. I like taking projects all the way from an initial idea to a working system, whether that means designing hardware, writing control software, machining parts, or testing and improving the final system.</p>
-										<a href="about.html" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
-
-						<!-- Four -->
-							<section id="four" class="wrapper alt style1">
+						<!-- Projects (moved above the other widgets) -->
+							<section id="four" class="wrapper alt style6">
 								<div class="inner">
 									<h2 class="major">Projects</h2>
                                 	<p>A selection of robotics, controls, mechanical design, manufacturing, computer vision, and simulation projects spanning coursework, research, and engineering teams.</p>
@@ -209,6 +185,42 @@
 								</div>
 							</section>
 
+						<!-- One -->
+							<section id="one" class="wrapper spotlight style1">
+								<div class="inner">
+									<a class="image"><img src="images/Tomasz_Grad.jpg" alt="Tomasz Graduation Photo" /></a>
+									<div class="content">
+										<h2 class="major">Education Background</h2>
+										<p>I recently graduated from Northwestern with a combined BS/MS in Mechanical Engineering, focusing on robotics and dynamical systems. From building powertrain components for a Baja SAE off-road vehicle to designing, machining, and assembling a robotic finger from scratch for my capstone, I've built my engineering foundation by getting my hands dirty on real, physical systems.</p>
+										<a href="about.html" class="special">Learn more</a>
+									</div>
+								</div>
+							</section>
+
+						<!-- Two -->
+							<section id="two" class="wrapper alt spotlight style2">
+								<div class="inner">
+									<a class="image"><img src="images/Tomasz_Machining.jpg" alt="" /></a>
+									<div class="content">
+										<h2 class="major">My Hobbies and Interests</h2>
+										<p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p>
+										<a href="about.html" class="special">Learn more</a>
+									</div>
+								</div>
+							</section>
+
+						<!-- Three -->
+							<section id="three" class="wrapper spotlight style6">
+								<div class="inner">
+									<a class="image"><img src="images/Tomasz_Job.jpg" alt="" /></a>
+									<div class="content">
+										<h2 class="major">My Work Experience</h2>
+										<p>I’m a mechanical engineer who enjoys working on problems that combine robotics, mechanical design, controls, and manufacturing. I like taking projects all the way from an initial idea to a working system, whether that means designing hardware, writing control software, machining parts, or testing and improving the final system.</p>
+										<a href="about.html" class="special">Learn more</a>
+									</div>
+								</div>
+							</section>
+
 					</section>
 
 				<!-- Footer -->
@@ -217,34 +229,43 @@
 							<h2 class="major">Contact Me</h2>
 							<p>Feel free to reach out if you have any questions or just want to chat!</p>
 						
-							<ul class="contact">
-								<div class="footer-socials">
+							<ul class="footer-socials">
 
-									<div class="social-item">
-										<a href="mailto:tomekkrzeminski12@gmail.com"
-										class="icon solid fa-envelope"
-										aria-label="Email"></a>
-										<span>Email Me</span>
-									</div>
+								<li class="social-item">
+									<details class="social-reveal">
+										<summary class="social-trigger">
+											<span class="icon-circle"><span class="icon solid fa-envelope"></span></span>
+											<span class="social-label">Email Me</span>
+										</summary>
+										<div class="social-reveal-content">
+											<a href="mailto:tomekkrzeminski12@gmail.com">tomekkrzeminski12@gmail.com</a>
+											<button type="button" class="copy-btn" data-copy="tomekkrzeminski12@gmail.com">Copy</button>
+										</div>
+									</details>
+								</li>
 
-									<div class="social-item">
-										<a href="tel:+18474205641"
-										class="icon solid fa-phone"
-										aria-label="Phone"></a>
-										<span>Give Me a Call</span>
-									</div>
+								<li class="social-item">
+									<details class="social-reveal">
+										<summary class="social-trigger">
+											<span class="icon-circle"><span class="icon solid fa-phone"></span></span>
+											<span class="social-label">Give Me a Call</span>
+										</summary>
+										<div class="social-reveal-content">
+											<a href="tel:+18474205641">(847) 420-5641</a>
+											<button type="button" class="copy-btn" data-copy="+18474205641">Copy</button>
+										</div>
+									</details>
+								</li>
 
-									<div class="social-item">
-										<a href="https://linkedin.com/in/tomaszkrzeminski"
-										target="_blank"
-										rel="noopener noreferrer"
-										class="icon brands fa-linkedin"
-										aria-label="LinkedIn"></a>
-										<span>Connect With Me <br>on LinkedIn</span>
-									</div>
+								<li class="social-item">
+									<a href="https://linkedin.com/in/tomaszkrzeminski" target="_blank" rel="noopener noreferrer" class="social-trigger">
+										<span class="icon-circle"><span class="icon brands fa-linkedin"></span></span>
+										<span class="social-label">Connect on LinkedIn</span>
+									</a>
+								</li>
 
-								</div>
 							</ul>
+
 							<ul class="copyright">
 								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
@@ -252,6 +273,33 @@
 					</section>
 
 			</div>
+
+			<script>
+				document.addEventListener('click', function (e) {
+					var btn = e.target.closest('.copy-btn');
+					if (!btn) return;
+					var value = btn.getAttribute('data-copy');
+					navigator.clipboard.writeText(value).then(function () {
+						var original = btn.textContent;
+						btn.textContent = 'Copied!';
+						btn.classList.add('copied');
+						setTimeout(function () {
+							btn.textContent = original;
+							btn.classList.remove('copied');
+						}, 1500);
+					});
+				});
+
+				// Only one contact card open at a time
+				document.querySelectorAll('details.social-reveal').forEach(function (el) {
+					el.addEventListener('toggle', function () {
+						if (!el.open) return;
+						document.querySelectorAll('details.social-reveal').forEach(function (other) {
+							if (other !== el) other.open = false;
+						});
+					});
+				});
+			</script>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
